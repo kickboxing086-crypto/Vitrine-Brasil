@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "Listing": {
+      "title": "Listing",
+      "description": "Represents a store, group, or service listing",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the listing" },
+        "description": { "type": "string", "description": "Description of the listing" },
+        "category": { "type": "string", "description": "Category: Networking, Conexões, Relacionamentos, etc." },
+        "platform": { "type": "string", "description": "Platform like whatsapp, telegram, etc." },
+        "link": { "type": "string", "description": "Link to the group or store" },
+        "clicks": { "type": "number", "description": "Click count for the listing" },
+        "memberCount": { "type": "number", "description": "Optional member count" },
+        "ownerId": { "type": "string", "description": "Optional User ID of the creator" },
+        "plan": { "type": "string", "description": "Plan selected: bronze, prata, ouro, diamante" },
+        "status": { "type": "string", "description": "Status of approval: pending, approved" },
+        "phoneNumber": { "type": "string", "description": "Contact phone number for verification" },
+        "userName": { "type": "string", "description": "Optional submitter contact name" },
+        "userEmail": { "type": "string", "description": "Optional submitter contact email" },
+        "expiresAt": { "type": "string", "description": "Expiration timestamp" },
+        "createdAt": { "type": "string", "description": "Timestamp" },
+        "updatedAt": { "type": "string", "description": "Timestamp" }
+      },
+      "required": ["title", "category", "platform", "link", "plan", "createdAt", "updatedAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Represents a registered platform client with intelligent profile insights",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string", "description": "Display name of the user" },
+        "email": { "type": "string", "description": "Email address of the user" },
+        "providerId": { "type": "string", "description": "Authenticating auth provider" },
+        "createdAt": { "type": "string", "description": "Creation timestamp" },
+        "lastLoginAt": { "type": "string", "description": "Last login timestamp" },
+        "accountType": { "type": "string", "description": "Intelligent account classification" },
+        "isRealGoogle": { "type": "boolean", "description": "Is authenticated in real-time via Google oAuth API" },
+        "trustScore": { "type": "number", "description": "Calculated score representing the trust of this registration" },
+        "verificationReason": { "type": "string", "description": "Reasoning detailed by system AI scanner" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "listings": {
+      "schema": { "$ref": "#/entities/Listing" },
+      "description": "Public listings visible to everyone, editable by owners."
+    },
+    "users": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User files with security logs and identity classifications."
+    }
+  }
+}

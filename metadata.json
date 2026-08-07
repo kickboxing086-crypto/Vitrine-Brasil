@@ -1,0 +1,8 @@
+{
+  "name": "Impulsione link",
+  "description": "Impulsione link, sua loja no topo. Uma plataforma para divulgação de lojas, grupos, sites e negócios. Conecte-se com mais clientes e usuários.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
