@@ -64,7 +64,7 @@ export function PolicyModal({ isOpen, onClose, type }: PolicyModalProps) {
 
                 <p className="text-gray-200 font-bold">3. Requisitos para as Divulgações</p>
                 <p>
-                  Ao compartilhar canais ou grupos do WhatsApp, Telegram e sites em geral, você garante que possui os direitos das mídias enviadas, e que o conteúdo não infringe leis nacionais, direitos de imagem ou represente spam/links fraudulentos de phishing. O sistema possui IA inteligente que bloqueará tentativas de spam e links perigosos.
+                  Ao compartilhar canais ou grupos do WhatsApp, Telegram e sites em geral, você garante que possui os direitos das mídias enviadas, e que o conteúdo não infringe leis nacionais, direitos de imagem ou represente spam/links fraudulentos de phishing. O sistema possui verificação de segurança automática que bloqueará tentativas de spam e links perigosos.
                 </p>
 
                 <p className="text-gray-200 font-bold">4. Política de Recorrência e Reembolso</p>

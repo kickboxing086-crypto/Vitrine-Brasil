@@ -129,7 +129,7 @@ export function Dashboard() {
   };
 
   const generateWhatsAppMessage = (listing: any) => {
-    const siteUrl = window.location.origin;
+    const siteUrl = 'https://vitrine-brasil-oficial.vercel.app';
     const clientNameStr = listing.userName ? ` *${listing.userName}*` : '';
 
     return `🎉 *SEU ANÚNCIO ESTÁ NO AR NO VITRINE BRASIL!* 🚀

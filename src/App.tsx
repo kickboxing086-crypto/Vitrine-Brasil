@@ -8,7 +8,6 @@ import { AdminModal } from './components/AdminModal';
 import { AdminLoginModal } from './components/AdminLoginModal';
 import { PlansModal } from './components/PlansModal';
 import { PolicyModal } from './components/PolicyModal';
-import { ReferralModal } from './components/ReferralModal';
 import { CATEGORIES, Category, PLATFORMS, PlatformType } from './data';
 import { useListings } from './hooks/useListings';
 import { useAuth } from './hooks/useAuth';
@@ -27,7 +26,6 @@ export default function App() {
   const [isPolicyOpen, setIsPolicyOpen] = useState(false);
   const [policyType, setPolicyType] = useState<'terms' | 'privacy'>('terms');
   const [currentView, setCurrentView] = useState<'home' | 'dashboard'>('home');
-  const [isReferralModalOpen, setIsReferralModalOpen] = useState(false);
   const [showAllCategories, setShowAllCategories] = useState(false);
   
   const { listings, loading, addListing } = useListings();
@@ -56,30 +54,6 @@ export default function App() {
       navigate('/impulsionelink');
     }
   };
-
-  React.useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const refCode = params.get('ref');
-      if (refCode) {
-        try {
-          localStorage.setItem('pending_referral_code', refCode.trim().toUpperCase());
-        } catch (storageErr) {
-          console.warn("Could not save pending referral code to localStorage:", storageErr);
-        }
-        setIsReferralModalOpen(true);
-        // Clean up the URL to keep it pretty
-        try {
-          const newUrl = window.location.origin + window.location.pathname;
-          window.history.replaceState({}, document.title, newUrl);
-        } catch (historyErr) {
-          console.warn("Could not clean up URL using history API (iframe constraint):", historyErr);
-        }
-      }
-    } catch (err) {
-      console.error("Error checking referral query arguments:", err);
-    }
-  }, []);
 
   const isListingActive = (listing: any) => {
     if (listing.status === 'pending') return false;
@@ -118,7 +92,6 @@ export default function App() {
         onAdvertiseClick={() => setIsPlansModalOpen(true)}
         currentView={currentView}
         setCurrentView={(view) => navigate(view === 'home' ? '/impulsionelink' : `/impulsionelink/${view}`)}
-        onReferralClick={() => setIsReferralModalOpen(true)}
       />
       
       <main>
@@ -427,11 +400,6 @@ export default function App() {
         isOpen={isPolicyOpen}
         onClose={() => setIsPolicyOpen(false)}
         type={policyType}
-      />
-      <ReferralModal
-        isOpen={isReferralModalOpen}
-        onClose={() => setIsReferralModalOpen(false)}
-        onLoginClick={() => navigate('/impulsionelink/login')}
       />
     </div>
   );

@@ -11,10 +11,9 @@ interface HeaderProps {
   onAdvertiseClick?: () => void;
   currentView?: 'home' | 'dashboard';
   setCurrentView?: (view: 'home' | 'dashboard') => void;
-  onReferralClick?: () => void;
 }
 
-export function Header({ isAuthenticated, isAdmin, onAddClick, onLoginClick, onAdvertiseClick, currentView = 'home', setCurrentView, onReferralClick }: HeaderProps) {
+export function Header({ isAuthenticated, isAdmin, onAddClick, onLoginClick, onAdvertiseClick, currentView = 'home', setCurrentView }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const whatsappLink = `https://wa.me/5584999857391?text=${encodeURIComponent('Olá! Tenho interesse em divulgar o meu site, como funciona?')}`;
@@ -44,6 +43,12 @@ export function Header({ isAuthenticated, isAdmin, onAddClick, onLoginClick, onA
              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 cursor-pointer group z-20"
              onClick={() => setCurrentView && setCurrentView('home')}
           >
+            <img 
+              src="/logo.jpg" 
+              alt="Vitrine Brasil Logo" 
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover border border-cyan-400/40 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform"
+              referrerPolicy="no-referrer"
+            />
             <span className="text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 uppercase whitespace-nowrap drop-shadow-sm">
               Vitrine Brasil
             </span>
@@ -140,17 +145,6 @@ export function Header({ isAuthenticated, isAdmin, onAddClick, onLoginClick, onA
               >
                 <Icons.Crown size={18} className="mr-3 text-yellow-500" />
                 Planos de Divulgação
-              </button>
-
-              <button
-                onClick={() => {
-                  onReferralClick && onReferralClick();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center px-4 py-3 text-sm font-bold rounded-xl text-gray-200 hover:text-white hover:bg-white/5 transition-all text-left"
-              >
-                <Icons.Gift size={18} className="mr-3 text-cyan-400" />
-                Indique & Ganhe
               </button>
 
               <div className="h-px w-full bg-white/10 my-2"></div>
