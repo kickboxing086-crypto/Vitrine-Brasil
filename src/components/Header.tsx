@@ -43,12 +43,17 @@ export function Header({ isAuthenticated, isAdmin, onAddClick, onLoginClick, onA
              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 cursor-pointer group z-20"
              onClick={() => setCurrentView && setCurrentView('home')}
           >
-            <img 
-              src="/logo.jpg" 
-              alt="Vitrine Brasil Logo" 
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-cover border border-cyan-400/40 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform"
-              referrerPolicy="no-referrer"
-            />
+            <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-cyan-400/40 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform flex items-center justify-center bg-black/60">
+              <img 
+                src="/logo.png" 
+                alt="Vitrine Brasil Logo" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Hide image if it fails and show fallback container
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
+            </div>
             <span className="text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400 uppercase whitespace-nowrap drop-shadow-sm">
               Vitrine Brasil
             </span>
